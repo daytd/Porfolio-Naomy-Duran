@@ -1,250 +1,348 @@
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Naomy Torres Durán</title>
 
-export default function Portfolio() {
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-      {/* Top Nav */}
-      <header className="sticky top-0 z-40 backdrop-blur bg-white/80 border-b">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="font-bold tracking-tight">Naomy Torres Durán</div>
-          <nav className="hidden md:flex gap-6 text-sm">
-            <a href="#about" className="hover:text-gray-600">Perfil</a>
-            <a href="#skills" className="hover:text-gray-600">Habilidades</a>
-            <a href="#experience" className="hover:text-gray-600">Experiencia</a>
-            <a href="#projects" className="hover:text-gray-600">Proyectos</a>
-            <a href="#solutions" className="hover:text-gray-600">Soluciones</a>
-            <a href="#education" className="hover:text-gray-600">Educación</a>
-            <a href="#certifications" className="hover:text-gray-600">Certificaciones</a>
-            <a href="#contact" className="hover:text-gray-600">Contacto</a>
-          </nav>
-          <div className="flex gap-3 items-center">
-            <a href="https://github.com/daytd" target="_blank" className="text-sm underline decoration-dotted underline-offset-4">GitHub</a>
-            <a href="https://www.linkedin.com/in/naomy-durán-146421335" target="_blank" className="text-sm underline decoration-dotted underline-offset-4">LinkedIn</a>
-          </div>
-        </div>
-      </header>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-      {/* Hero */}
-      <section className="relative isolate">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"/>
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <motion.h1 initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:0.6}} className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Desarrolladora Web Junior orientada a resultados
-          </motion.h1>
-          <p className="mt-4 max-w-2xl text-gray-700">
-            Experiencia sólida en HTML, CSS, JavaScript y Python. Interés en ciberseguridad y base en soporte técnico. Me enfoco en entregar interfaces limpias, código mantenible y mejoras medibles de rendimiento.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="https://github.com/daytd/Portfolio-Naomy-Torres/blob/main/CV-Naomy-Torres.pdf" target="_blank" rel="noopener noreferrer">
-              <Button className="rounded-2xl px-6">Ver CV completo</Button>
-            </a>
-            <a href="#projects">
-              <Button variant="outline" className="rounded-2xl px-6">Ver proyectos</Button>
-            </a>
-          </div>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-          {/* Metrics */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              {label:"Mejoras de rendimiento", value:"20%–40%"},
-              {label:"Bugs resueltos", value:"50+"},
-              {label:"Entregas a tiempo", value:"100%"},
-              {label:"Tecnologías", value:"10+"}
-            ].map((m,i)=> (
-              <Card key={i} className="shadow-sm">
-                <CardContent className="p-5">
-                  <div className="text-2xl font-bold">{m.value}</div>
-                  <div className="text-sm text-gray-600">{m.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-      {/* Skills Matrix */}
-      <section id="skills" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Habilidades técnicas</h2>
-          <p className="text-gray-700 mt-2">Frontend, backend introductorio, control de versiones y fundamentos de UI/UX.</p>
+  <style>
+    /* ---------------- BASE ---------------- */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color:#0e1b2a; color:#fff; scroll-behavior:smooth; }
+    h1,h2,h3,h4,h5 { color:#e6edf5; }
+    section { padding:80px 10%; position:relative; }
+    a { text-decoration:none; }
 
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {[{
-              title:"Frontend",
-              items:["HTML5","CSS3","JavaScript","Figma"],
-            },{
-              title:"Backend / Datos",
-              items:["Python","PHP (básico)","MySQL"],
-            },{
-              title:"Dev & Herramientas",
-              items:["Git","GitHub","Integración de APIs","QuickSight"],
-            }].map((col,idx)=> (
-              <Card key={idx} className="shadow-sm">
-                <CardContent className="p-6">
-                  <div className="font-semibold mb-2">{col.title}</div>
-                  <ul className="space-y-2 text-gray-700">
-                    {col.items.map((t)=>(<li key={t} className="flex items-center justify-between">
-                      <span>{t}</span>
-                      <span className="h-1 w-20 bg-gray-200 rounded overflow-hidden">
-                        <span className="block h-full bg-gray-700" style={{width: `${70 + Math.random()*20}%`}}/>
-                      </span>
-                    </li>))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    /* ---------------- HEADER ---------------- */
+    header {
+      position:fixed; top:0; left:0; width:100%;
+      background: rgba(10,20,40,0.9);
+      backdrop-filter: blur(8px);
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 8%; z-index:1000;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    header h1 { font-size:1.2rem; letter-spacing:1px; }
+    nav a { color:#cfd9e6; margin:0 12px; transition:color 0.3s; }
+    nav a:hover { color:#4fa3ff; }
 
-      {/* Experience Timeline */}
-      <section id="experience" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-8">Experiencia</h2>
-          <div className="relative pl-6 border-l">
-            <article className="mb-10">
-              <h3 className="font-semibold">Amazon — Data Administration Assistant / Soporte Técnico</h3>
-              <div className="text-sm text-gray-600">Octubre – Diciembre 2024</div>
-              <ul className="mt-3 list-disc ml-5 text-gray-700 space-y-1">
-                <li>Optimicé el uso de Excel y estructuré solicitudes de documentos para mejorar la coordinación del equipo.</li>
-                <li>Mejoré la organización de datos con Excel y QuickSight.</li>
-                <li>Entregas puntuales con altos estándares de calidad.</li>
-              </ul>
-            </article>
-            <article>
-              <h3 className="font-semibold">Innobovino — Junior Developer / Optimización de Aplicaciones</h3>
-              <div className="text-sm text-gray-600">Octubre – Diciembre 2023</div>
-              <ul className="mt-3 list-disc ml-5 text-gray-700 space-y-1">
-                <li>Mejoré el rendimiento corrigiendo errores de código, diseño y contenido.</li>
-                <li>Resolví bugs y pulí la interfaz para elevar la experiencia de usuario.</li>
-                <li>Entregué optimizaciones con HTML, CSS y Figma.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
+    /* ---------------- HERO ---------------- */
+    .hero {
+      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+      background:linear-gradient(120deg,#09121f,#142a45); padding-left:10%; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+      background:radial-gradient(circle, rgba(79,163,255,0.2) 0%, transparent 70%);
+      animation: rotateGlow 20s linear infinite;
+    }
+    @keyframes rotateGlow { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+    .hero h1 { font-size:3rem; animation: fadeInUp 1.2s ease forwards; }
+    .hero p { margin-top:15px; color:#b6c2d1; max-width:550px; animation: fadeInUp 1.5s ease forwards; }
+    .btn-custom {
+      display:inline-block; margin-top:25px; padding:12px 28px; border-radius:30px;
+      background:linear-gradient(90deg,#0055ff,#00b7ff); color:white; transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-custom:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 0 15px #00b7ff80; }
 
-      {/* Projects with tags */}
-      <section id="projects" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-8">Proyectos</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[{
-              name:"Sitio de Restaurante",
-              desc:"Sitio responsive con navegación clara y tipografía legible.",
-              stack:["HTML","CSS","UI"],
-            },{
-              name:"App de Filas del Comedor",
-              desc:"Aplicación para reducir tiempos de espera y mejorar el flujo.",
-              stack:["JS","UX","Optimización"],
-            },{
-              name:"Esencias Naturales — Emprendimiento",
-              desc:"Landing y catálogo para visibilidad de marca.",
-              stack:["HTML","CSS","Branding"],
-            }].map((p, i)=> (
-              <Card key={i} className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="font-semibold text-lg">{p.name}</div>
-                  <p className="text-gray-700 mt-2">{p.desc}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.stack.map(s=> <span key={s} className="text-xs bg-gray-100 border rounded px-2 py-1">{s}</span>)}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    /* ---------------- SECTION TITLES ---------------- */
+    .section-title {
+      text-align:center; font-size:2rem; margin-bottom:40px; color:#4fa3ff;
+      text-transform:uppercase; letter-spacing:2px;
+    }
 
-      {/* Problem > Cause > Fix > Impact */}
-      <section id="solutions" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-8">Problemas comunes y cómo los resuelvo</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[{
-              title:"Rendimiento lento",
-              cause:"Carga innecesaria de recursos y renders costosos.",
-              fix:"Auditoría de Lighthouse, reducción de payload, optimización de CSS/JS y lazy loading.",
-              impact:"Mejora de 20%–40% en métricas de tiempo de carga y percepción de velocidad.",
-            },{
-              title:"Datos desorganizados",
-              cause:"Fuentes dispersas y procesos manuales.",
-              fix:"Estandarización en Excel, dashboards con QuickSight y flujos de validación.",
-              impact:"Visibilidad y decisiones más rápidas con menos errores.",
-            },{
-              title:"Riesgos de seguridad básicos",
-              cause:"Validaciones insuficientes y manejo débil de credenciales.",
-              fix:"Buenas prácticas de entrada/salida, variables de entorno y control de dependencias.",
-              impact:"Reducción del riesgo y base más confiable para escalar.",
-            },{
-              title:"Experiencia inconsistente",
-              cause:"Diseño no sistematizado y estilos duplicados.",
-              fix:"Guía de estilos ligera, componentes reutilizables y revisión de accesibilidad.",
-              impact:"Interfaz coherente, mantenible y accesible.",
-            }].map((c, i)=> (
-              <Card key={i} className="shadow-sm">
-                <CardContent className="p-6">
-                  <div className="font-semibold">{c.title}</div>
-                  <div className="mt-2 text-sm text-gray-700">Causa: {c.cause}</div>
-                  <div className="mt-1 text-sm text-gray-700">Solución: {c.fix}</div>
-                  <div className="mt-1 text-sm text-gray-700">Impacto: {c.impact}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    /* ---------------- ABOUT ---------------- */
+    .about { background:#101d30; border-top:1px solid #1e2c43; }
+    .about-content { display:flex; flex-wrap:wrap; gap:40px; align-items:center; }
+    .about img { width:250px; border-radius:50%; border:3px solid #4fa3ff; box-shadow:0 0 20px #4fa3ff40; }
+    .about-text { flex:1; line-height:1.6; }
 
-      {/* Education & Certs */}
-      <section id="education" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Educación</h2>
-          <div className="mt-6 grid md:grid-cols-2 gap-6">
-            <Card className="shadow-sm">
-              <CardContent className="p-6">
-                <div className="font-semibold">Bachillerato y Técnico Medio en Desarrollo Web</div>
-                <div className="text-sm text-gray-600">2019–2024 — Colegio Técnico Profesional Mercedes Norte</div>
-              </CardContent>
-            </Card>
-            <Card className="shadow-sm">
-              <CardContent className="p-6">
-                <div className="font-semibold">Ingeniería Informática — en curso</div>
-                <div className="text-sm text-gray-600">Desde 2025 — UNED</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    /* ---------------- SKILLS ---------------- */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+    .skill {
+      background:#14263f; padding:20px; border-radius:12px; text-align:center;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .skill:hover { transform:translateY(-5px); box-shadow:0 0 15px #00b7ff40; }
 
-      <section id="certifications" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Certificaciones</h2>
-          <div className="mt-6 grid md:grid-cols-4 gap-6">
-            {["CCNA: Introduction to Networks — Cisco (2023)","Introduction to IoT — Cisco (2022)","PCAP: Programming Essentials in Python — OpenEDG (2023)","Mindshift — McMaster University (2023)"].map((c,i)=> (
-              <Card key={i} className="shadow-sm">
-                <CardContent className="p-6 text-sm text-gray-700">{c}</CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    /* ---------------- EXPERIENCE ---------------- */
+    .timeline { border-left:2px solid #4fa3ff; padding-left:30px; }
+    .timeline-item { margin-bottom:40px; position:relative; }
+    .timeline-item::before {
+      content:""; width:14px; height:14px; background:#4fa3ff; border-radius:50%;
+      position:absolute; left:-38px; top:5px;
+    }
 
-      {/* Contact */}
-      <section id="contact" className="py-20 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold">Contacto</h2>
-          <p className="text-gray-300 mt-2">Disponible para prácticas y roles junior en desarrollo y soporte técnico.</p>
-          <div className="mt-6 flex justify-center gap-6">
-            <a href="mailto:naomydayan13@gmail.com" className="underline underline-offset-4">Correo</a>
-            <a href="https://github.com/daytd" target="_blank" className="underline underline-offset-4">GitHub</a>
-            <a href="https://www.linkedin.com/in/naomy-durán-146421335" target="_blank" className="underline underline-offset-4">LinkedIn</a>
-          </div>
-          <p className="mt-4 text-sm text-gray-400">Autorizada para trabajar en Costa Rica • Disponibilidad abierta • Idiomas: Español (nativo), Inglés (B2), Portugués (B1)</p>
-        </div>
-      </section>
+    /* ---------------- PROJECTS ---------------- */
+    .project-card { background:#14263f; padding:20px; border-radius:12px; text-align:center; margin:20px auto; max-width:700px; }
+    .project-card canvas { background:#0e1b2a; border-radius:8px; margin:10px 0; }
+    .product-grid { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:15px; }
+    .flip-card { background:transparent; width:120px; height:160px; perspective:1000px; }
+    .flip-card-inner {
+      position:relative; width:100%; height:100%;
+      text-align:center; transition: transform 0.8s; transform-style:preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner { transform:rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:10px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      color:#fff;
+    }
+    .flip-card-front { background:#1b2c47; }
+    .flip-card-front img { width:80px; height:80px; border-radius:10px; margin-bottom:5px; }
+    .flip-card-back { background:#0055ff; transform:rotateY(180deg); font-size:0.85rem; padding:5px; }
+
+    .app-preview { background:#1b2c47; border-radius:12px; padding:15px; margin-top:15px; }
+    .app-frame { background:#0e1b2a; border-radius:10px; padding:10px; }
+    .status-bar { height:8px; background:#0055ff; border-radius:4px; margin-bottom:5px; }
+    .app-header { font-weight:bold; margin-bottom:5px; }
+    .app-menu { list-style:none; padding-left:0; margin-bottom:10px; }
+    .app-menu li { background:#14263f; padding:5px 10px; border-radius:6px; margin-bottom:5px; }
+
+    /* ---------------- LANGUAGES ---------------- */
+    .lang-bar { background:#14263f; border-radius:10px; overflow:hidden; height:15px; margin-top:5px; }
+    .lang-fill { height:100%; background:linear-gradient(90deg,#0055ff,#00b7ff); }
+
+    /* ---------------- CONTACT ---------------- */
+    .contact { background:#0b1524; text-align:center; padding:80px 10%; }
+    .socials a { margin:0 10px; color:#4fa3ff; font-size:1.6rem; transition:transform 0.3s, color 0.3s; }
+    .socials a:hover { transform:scale(1.2); color:#00b7ff; }
+
+    /* ---------------- ANIMATIONS ---------------- */
+    @keyframes fadeInUp { 0%{opacity:0; transform:translateY(20px);}100%{opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <h1>Naomy Torres Durán</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#languages">Languages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Junior Web Developer</h1>
+    <p>Proactive Junior Developer with experience in HTML, CSS, JavaScript, Python and QuickSight. Interested in cybersecurity with strong IT fundamentals. Seeking to contribute to innovative projects.</p>
+    <a href="#projects" class="btn-custom">View Projects</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Hi, I’m Naomy Torres Durán, a passionate Junior Web Developer with a strong foundation in front-end technologies and a growing interest in cybersecurity. I thrive in fast-paced environments where adaptability, curiosity, and collaboration are key. My journey blends technical precision with a human touch—I believe that great code solves problems, but great developers understand people too.
+         Whether I’m optimizing an app’s performance or streamlining data workflows, I bring a proactive mindset and a commitment to continuous learning. I’m currently pursuing a degree in Computer Engineering and actively building projects that reflect my growth and creativity..</p>
+      </div>
     </div>
-  );
-}
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><h3>Languages</h3><p>HTML, CSS, JS, PHP, Python</p></div>
+      <div class="skill"><h3>Frameworks & Tools</h3><p>React, Node.js, Git, GitHub, MySQL, Figma</p></div>
+      <div class="skill"><h3>Web Development</h3><p>Front-end and back-end integration, UI/UX design, responsive layouts</p></div>
+      <div class="skill"><h3>Other</h3><p>Problem-solving, teamwork, fast learning, attention to detail</p></div>
+      <div class="skill"><h3>Additional Information</h3><p>Authorized to work in Costa Rica, open availability and schedule flexibility, strong attendance record and dependable performance</p></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Amazon — Data Admin Assistant</h3>
+        <p><i>Oct - Dec 2024</i></p>
+        <p>OCompleted tasks on time, maintaining high efficiency, optimized Excel use to improve data management, streamlined document request system, improving team coordination, enhanced data organization with Excel and QuickSight.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Innobovino — Junior Developer</h3>
+        <p><i>Oct - Dec 2023</i></p>
+        <p> Improved app performance by fixing errors in code, design, and content, corrected spelling, design issues, and code bugs, enhancing user experience, delivered optimizations on time using HTML, CSS, and Figma.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Project 1: Dashboard -->
+        <div class="carousel-item active">
+          <div class="project-card">
+            <h3> Analytics Dashboard</h3>
+            <p>Simulated Power BI-style dashboard with sales and performance metrics.</p>
+            <canvas id="chartSales" style="height:200px;"></canvas>
+            <canvas id="chartProducts" style="height:200px;"></canvas>
+          </div>
+        </div>
+
+        <!-- Project 2: Essential Oils -->
+        <div class="carousel-item">
+          <div class="project-card">
+            <h3>Essential Oils Landing Page</h3>
+            <p>Developed a small business website for a natural essence brand, focusing on branding and online product display.</p>
+            <div class="product-grid">
+              <!-- Lavender -->
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Lavender</h5>
+                  </div>
+                  <div class="flip-card-back">
+                    <p>Relaxing, reduces stress and anxiety, promotes sleep.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Mint -->
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Mint</h5>
+                  </div>
+                  <div class="flip-card-back">
+                    <p>Refreshing, improves digestion, relieves headaches.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Eucalyptus -->
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Eucalyptus</h5>
+                  </div>
+                  <div class="flip-card-back">
+                    <p>Decongestant, improves breathing, antibacterial.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Rosemary -->
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Rosemary</h5>
+                  </div>
+                  <div class="flip-card-back">
+                    <p>Enhances memory, stimulates hair growth, antioxidant.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Food App -->
+        <div class="carousel-item">
+          <div class="project-card">
+            <h3> Dining Queue App</h3>
+            <p>App designed to optimize dining lines with interactive menu and order buttons.</p>
+            <div class="app-preview">
+              <div class="app-frame">
+                <div class="status-bar"></div>
+                <div class="app-header">Menu Today</div>
+                <ul class="app-menu">
+                  <li>Chicken with Mash</li>
+                  <li> Pesto Pasta</li>
+                  <li>Tropical Salad</li>
+                  <li> Dessert of the Day</li>
+                </ul>
+                <button class="btn-custom">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="skills-grid">
+      <div class="skill">Artificial Intelligence Fundamentals — IBM</div>
+      <div class="skill">CCNA: Introduction to Networks — Cisco</div>
+      <div class="skill">Introduction to IoT — Cisco</div>
+      <div class="skill">PCAP: Programming Essentials in Python — OpenEDG</div>
+      <div class="skill">Mindshift — McMaster University</div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <h2 class="section-title">Languages</h2>
+    <p>Spanish (Native)</p>
+    <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+    <p>English (B2)</p>
+    <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+    <p>Portuguese (B1)</p>
+    <div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>naomydayan13@gmail.com</p>
+    <div class="socials">
+      <a href="mailto:naomydayan13@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://github.com/daytd"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/naomy-durán-146421335"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chart.js Scripts -->
+  <script>
+    const ctxSales = document.getElementById('chartSales').getContext('2d');
+    new Chart(ctxSales, {
+      type: 'bar',
+      data: { labels:['Jan','Feb','Mar','Apr','May'], datasets:[{label:'Sales', data:[120,190,170,220,210], backgroundColor:'#00b7ff'}] },
+      options:{ responsive:true, plugins:{ legend:{ display:true, labels:{color:'#fff'} } }, scales:{ x:{ ticks:{color:'#fff'} }, y:{ ticks:{color:'#fff'} } } }
+    });
+
+    const ctxProducts = document.getElementById('chartProducts').getContext('2d');
+    new Chart(ctxProducts, {
+      type: 'pie',
+      data: { labels:['Product A','Product B','Product C'], datasets:[{label:'Products', data:[30,50,20], backgroundColor:['#0055ff','#00b7ff','#4fa3ff']}] },
+      options:{ responsive:true, plugins:{ legend:{ labels:{color:'#fff'} } } }
+    });
+  </script>
+
+</body>
+</html>
